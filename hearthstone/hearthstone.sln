@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hearthstone.web", "hearthstone.web\hearthstone.web.csproj", "{8F21978A-CB06-4859-A5ED-F0CA44C01790}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hearthstone.logic", "hearthstone.logic\hearthstone.logic.csproj", "{86C55EBB-17EE-4A13-B987-17C1B038ABE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hearthstone.data", "hearthstone.data\hearthstone.data.csproj", "{1A49AD84-DF40-4315-B2E7-FA18A315DC2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hearthstone.test", "hearthstone.test\hearthstone.test.csproj", "{71FE96C9-ED04-4DC3-92E3-3909BC3427CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F21978A-CB06-4859-A5ED-F0CA44C01790}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F21978A-CB06-4859-A5ED-F0CA44C01790}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F21978A-CB06-4859-A5ED-F0CA44C01790}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F21978A-CB06-4859-A5ED-F0CA44C01790}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86C55EBB-17EE-4A13-B987-17C1B038ABE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86C55EBB-17EE-4A13-B987-17C1B038ABE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86C55EBB-17EE-4A13-B987-17C1B038ABE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86C55EBB-17EE-4A13-B987-17C1B038ABE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A49AD84-DF40-4315-B2E7-FA18A315DC2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A49AD84-DF40-4315-B2E7-FA18A315DC2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A49AD84-DF40-4315-B2E7-FA18A315DC2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A49AD84-DF40-4315-B2E7-FA18A315DC2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71FE96C9-ED04-4DC3-92E3-3909BC3427CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71FE96C9-ED04-4DC3-92E3-3909BC3427CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71FE96C9-ED04-4DC3-92E3-3909BC3427CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71FE96C9-ED04-4DC3-92E3-3909BC3427CF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
