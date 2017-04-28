@@ -30,8 +30,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,7 +51,77 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Card.cs">
+      <DependentUpon>hearthstoneModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CardPack.cs">
+      <DependentUpon>hearthstoneModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Deck.cs">
+      <DependentUpon>hearthstoneModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DeckCard.cs">
+      <DependentUpon>hearthstoneModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="hearthstoneModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hearthstoneModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="hearthstoneModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hearthstoneModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="hearthstoneModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hearthstoneModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tblCardType.cs">
+      <DependentUpon>hearthstoneModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>hearthstoneModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserCardCollection.cs">
+      <DependentUpon>hearthstoneModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserRole.cs">
+      <DependentUpon>hearthstoneModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VirtualPurchase.cs">
+      <DependentUpon>hearthstoneModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="hearthstoneModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>hearthstoneModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="hearthstoneModel.edmx.diagram">
+      <DependentUpon>hearthstoneModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="hearthstoneModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>hearthstoneModel.Context.cs</LastGenOutput>
+      <DependentUpon>hearthstoneModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="hearthstoneModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>hearthstoneModel.edmx</DependentUpon>
+      <LastGenOutput>hearthstoneModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
