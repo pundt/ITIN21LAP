@@ -12,39 +12,57 @@
 
     <title>hearthstone webshop</title>
 
+
     @Styles.Render("~/Content/css")
+    <link href="https://fonts.googleapis.com/css?family=Eagle+Lake" rel="stylesheet">
+
     @Scripts.Render("~/bundles/modernizr")
 </head>
 
 <body>
-
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <header>
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">hearthstone webshop</a>
+            <div class="row">
+                <div class="col-lg-1">
+                    <!--https://www.easyicon.net/language.en/1194625-Hearthstone_icon.html-->
+                    <img src="~/Content/images/logo.png" class="logo rotating" />
+                </div>
+                <div class="col-lg-11 title">
+                    Clonestone Card Shop
+                </div>
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <form class="navbar-form navbar-right">
-                    <div class="form-group">
-                        <input type="text" placeholder="Benutzer" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" placeholder="Passwort" class="form-control">
-                    </div>
-                    <button type="submit" class="btn btn-success">Anmelden</button>
-                </form>
-            </div><!--/.navbar-collapse -->
+        </div>
+    </header>
+    <nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2"><p>@Html.ActionLink("Shop", "Index", "Shop", new { })</p></div>
+                <div class="col-lg-2"><p>@Html.ActionLink("Karten-Deck", "Index", "Deckbuilder")</p></div>
+                <div class="col-lg-2"><p>@Html.ActionLink("Registrieren", "Register", "User")</p></div>
+                <div class="col-lg-2"><input type="text" placeholder="Benutzer" class="form-control"></div>
+                <div class="col-lg-2"><input type="password" placeholder="Passwort" class="form-control"></div>
+                <div class="col-lg-2"><button type="submit" class="btn">Anmelden</button></div>
+            </div>
         </div>
     </nav>
 
     @RenderBody()
-  
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    &copy; 2017 ACME, Inc.
+                </div>
+                <div class="col-lg-4">
+                    @Html.ActionLink("Terms&Conditions", "Terms", "Shop")
+                </div>
+                <div class="col-lg-4">
+                    @Html.ActionLink("Privacy", "Privacy", "Shop")
+                </div>
+            </div>
+        </div>
+    </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
