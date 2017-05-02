@@ -120,6 +120,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\Constants.cs" />
+    <Compile Include="App_GlobalResources\ValidationMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValidationMessages.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -133,10 +139,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\slide2.jpg" />
+    <Content Include="Content\images\slide1.jpg" />
+    <Content Include="Content\images\slide3.jpg" />
+    <Content Include="Content\images\slide4.jpg" />
+    <Content Include="Content\images\slide5.jpg" />
+    <Content Include="Content\images\slide6.jpg" />
+    <Content Include="Content\images\slide7.jpg" />
     <Content Include="Content\styles\bootstrap-theme.css" />
     <Content Include="Content\styles\bootstrap-theme.min.css" />
     <Content Include="Content\styles\bootstrap.css" />
     <Content Include="Content\styles\bootstrap.min.css" />
+    <Content Include="Content\styles\carousel.css" />
     <Content Include="favicon.ico" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -179,10 +193,10 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shop\Index.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -195,6 +209,12 @@
       <Project>{86C55EBB-17EE-4A13-B987-17C1B038ABE1}</Project>
       <Name>hearthstone.logic</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\ValidationMessages.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ValidationMessages.Designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

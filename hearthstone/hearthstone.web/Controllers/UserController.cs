@@ -35,23 +35,23 @@ namespace hearthstone.web.Controllers
         {
             log.Info("POST - UserController - Register");
 
-            switch (UserAdministration.Register(
-                model.FirstName, 
-                model.LastName, 
-                model.Mail, 
-                model.Username, 
-                model.Password, 
-                model.Avatar))
-            {
-                case RegisterResult.NotSet:
-                    break;
-                case RegisterResult.Successful:
-                    break;
-                case RegisterResult.UsernameExists:
-                    break;
-                default:
-                    break;
-            }
+            //switch (UserAdministration.Register(
+            //    model.FirstName, 
+            //    model.LastName, 
+            //    model.Mail, 
+            //    model.Username, 
+            //    model.Password, 
+            //    model.Avatar))
+            //{
+            //    case RegisterResult.NotSet:
+            //        break;
+            //    case RegisterResult.Successful:
+            //        break;
+            //    case RegisterResult.UsernameExists:
+            //        break;
+            //    default:
+            //        break;
+            //}
 
             return View();
         }

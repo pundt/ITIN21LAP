@@ -63,15 +63,15 @@ namespace hearthstone.logic
                     }
                     else
                     {
-                        user = new User()
-                        {
-                            FirstName = firstName,
-                            LastName = lastName,
-                            Mail = email,
-                            Username = username,
-                            Password = "WTF",
-                            Avatar = avatar
-                        };
+                        //user = new User()
+                        //{
+                        //    FirstName = firstName,
+                        //    LastName = lastName,
+                        //     = email,
+                        //    Username = username,
+                        //    Password = "WTF",
+                        //    Avatar = avatar
+                        //};
 
                         context.AllUsers.Add(user);
                         context.SaveChanges();

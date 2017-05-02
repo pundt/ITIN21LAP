@@ -2,6 +2,7 @@
 body {
     font-family: 'Eagle Lake', cursive;
     padding-top: 130px;
+    background-color: #000;
 }
 
 header {
@@ -40,11 +41,11 @@ nav {
         border-color: #DCAE67;
     }
 
-    nav .btn:hover, nav button:active {
-        background-color: #000;
-        color: #DCAE67;
-        border-color: #DCAE67;
-    }
+        nav .btn:hover, nav button:active {
+            background-color: #000;
+            color: #DCAE67;
+            border-color: #DCAE67;
+        }
 
     nav a {
         text-decoration: none !important;
@@ -59,12 +60,12 @@ nav {
         font-size: 18px;
     }
 
-        nav p a {
+        nav p a, footer, footer a {
             color: #DCAE67 !important;
             font-family: 'Eagle Lake', cursive;
         }
 
-            nav p a:hover {
+            nav p a:hover, footer a:hover {
                 -webkit-animation: neon3 1.5s ease-in-out infinite alternate;
                 -moz-animation: neon3 1.5s ease-in-out infinite alternate;
                 animation: neon3 1.5s ease-in-out infinite alternate;
@@ -81,6 +82,25 @@ footer {
 
 
 /* cool animations down here*/
+/*
+    bootstrap carousel
+*/
+div.c-wrapper {
+    width: 60%; /* for example */
+    margin: auto;
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    max-height: 500px;
+    width: 100%; /* use this, or not */
+    margin: auto;
+}
+
+.jumbotron {
+    background-color: #000;
+}
+
 /*
     http://codepen.io/FelixRilling/pen/qzfoc
 */

@@ -312,8 +312,8 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GamerTag" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="128" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="UserSalt" Type="String" MaxLength="128" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="ID_UserRole" Type="Int32" />
@@ -571,8 +571,8 @@
                 <ScalarProperty Name="ID" ColumnName="idUser" />
                 <ScalarProperty Name="FirstName" ColumnName="firstname" />
                 <ScalarProperty Name="LastName" ColumnName="lastname" />
-                <ScalarProperty Name="Mail" ColumnName="email" />
-                <ScalarProperty Name="Username" ColumnName="username" />
+                <ScalarProperty Name="Username" ColumnName="email" />
+                <ScalarProperty Name="GamerTag" ColumnName="username" />
                 <ScalarProperty Name="Password" ColumnName="userpassword" />
                 <ScalarProperty Name="UserSalt" ColumnName="usersalt" />
                 <ScalarProperty Name="ID_UserRole" ColumnName="fkUserRole" />

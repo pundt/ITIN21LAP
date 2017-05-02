@@ -25,8 +25,8 @@ namespace hearthstone.data
         public int ID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Mail { get; set; }
         public string Username { get; set; }
+        public string GamerTag { get; set; }
         public string Password { get; set; }
         public string UserSalt { get; set; }
         public Nullable<int> ID_UserRole { get; set; }
