@@ -14,6 +14,9 @@ namespace hearthstone.web
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/content/scripts/jquery.validate*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/toastr").Include(
+                        "~/content/scripts/toastr.js"));
+
             // Verwenden Sie die Entwicklungsversion von Modernizr zum Entwickeln und Erweitern Ihrer Kenntnisse. Wenn Sie dann
             // für die Produktion bereit sind, verwenden Sie das Buildtool unter "http://modernizr.com", um nur die benötigten Tests auszuwählen.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
@@ -25,7 +28,9 @@ namespace hearthstone.web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/content/styles/bootstrap.css",
-                "~/content/styles/site.css"
+                "~/content/styles/site.css",
+                "~/Content/styles/bootstrap-theme.css",
+                "~/Content/styles/toastr.css"
                       ));
         }
     }

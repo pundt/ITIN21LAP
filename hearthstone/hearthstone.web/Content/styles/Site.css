@@ -76,7 +76,13 @@ footer {
 }
 
 /* id */
+#content {
+    color: #DCAE67;
+}
 
+    #content .row {
+        margin-bottom: 5px;
+    }
 
 /* class */
 

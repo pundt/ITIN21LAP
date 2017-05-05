@@ -1,6 +1,5 @@
 ﻿using hearthstone.web.App_Code;
-using hearthstone.web.App_GlobalResources;
-
+using Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -25,7 +24,7 @@ namespace hearthstone.web.Models
             ErrorMessageResourceName = Constants.Validation.MAX_LENGTH)]
         [EmailAddress(ErrorMessageResourceType = typeof(ValidationMessages),
             ErrorMessageResourceName = Constants.Validation.EMAIL)]
-        [Display(Name = Labels.USERNAME)]
+        [Display(Name = Labels.USERNAME, ResourceType = typeof(DisplayNames))]
         public string Username { get; set; }
 
         /*
@@ -40,7 +39,8 @@ namespace hearthstone.web.Models
         [StringLength(50,
             ErrorMessageResourceType = typeof(ValidationMessages),
            ErrorMessageResourceName = Constants.Validation.MAX_LENGTH)]
-        [Display(Name=Labels.PASSWORD)]
+        [Display(Name = Labels.PASSWORD, ResourceType = typeof(DisplayNames))]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
         /*
@@ -60,7 +60,8 @@ namespace hearthstone.web.Models
         [Compare(nameof(Password), 
             ErrorMessageResourceType = typeof(ValidationMessages),
             ErrorMessageResourceName = Constants.Validation.PASSWORD_EQUAL)]
-        [Display(Name = Labels.CONFIRMATION)]
+        [Display(Name = Labels.CONFIRMATION, ResourceType = typeof(DisplayNames))]
+        [DataType(DataType.Password)]
         public string PasswordConfirmation { get; set; }
 
         [Required(
@@ -71,8 +72,8 @@ namespace hearthstone.web.Models
         [StringLength(50,
             ErrorMessageResourceType = typeof(ValidationMessages),
            ErrorMessageResourceName = Constants.Validation.MAX_LENGTH)]
-        [Display(Name = Labels.FIRSTNAME)]
-        public string FirstName { get; internal set; }
+        [Display(Name = Labels.FIRSTNAME, ResourceType = typeof(DisplayNames))]
+        public string FirstName { get; set; }
 
         [Required(
            AllowEmptyStrings = false,
@@ -82,8 +83,8 @@ namespace hearthstone.web.Models
         [StringLength(50,
             ErrorMessageResourceType = typeof(ValidationMessages),
            ErrorMessageResourceName = Constants.Validation.MAX_LENGTH)]
-        [Display(Name = Labels.LASTNAME)]
-        public string LastName { get; internal set; }
+        [Display(Name = Labels.LASTNAME, ResourceType = typeof(DisplayNames))]
+        public string LastName { get; set; }
 
         [Required(
            AllowEmptyStrings = false,
@@ -93,8 +94,8 @@ namespace hearthstone.web.Models
         [StringLength(20,
             ErrorMessageResourceType = typeof(ValidationMessages),
            ErrorMessageResourceName = Constants.Validation.MAX_LENGTH)]
-        [Display(Name = Labels.GAMERTAG)]
-        public string GamerTag { get; internal set; }
+        [Display(Name = Labels.GAMERTAG, ResourceType = typeof(DisplayNames))]
+        public string GamerTag { get; set; }
 
     }
 }

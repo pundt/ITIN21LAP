@@ -7,6 +7,12 @@ namespace hearthstone.web.App_Code
 {
     public class Constants
     {
+        public class MessageType
+        {
+            public const string ERROR = "error";
+            public const string WARNING= "warning";
+            public const string SUCCESS = "success";
+        }
         public class Validation
         {
             public const string REQUIRED = "REQUIRED";

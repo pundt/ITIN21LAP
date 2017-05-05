@@ -14,7 +14,6 @@
 
 
     @Styles.Render("~/Content/css")
-    <link rel="stylesheet" href="~/Content/styles/bootstrap-theme.css"/>
 
     <link href="~/Content/styles/carousel.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Eagle+Lake" rel="stylesheet">
@@ -42,9 +41,8 @@
                 <div class="col-lg-2"><p>@Html.ActionLink("Shop", "Index", "Shop", new { })</p></div>
                 <div class="col-lg-2"><p>@Html.ActionLink("Karten-Deck", "Index", "Deckbuilder")</p></div>
                 <div class="col-lg-2"><p>@Html.ActionLink("Registrieren", "Register", "User")</p></div>
-                <div class="col-lg-2"><input type="text" placeholder="Benutzer" class="form-control"></div>
-                <div class="col-lg-2"><input type="password" placeholder="Passwort" class="form-control"></div>
-                <div class="col-lg-2"><button type="submit" class="btn">Anmelden</button></div>
+               
+                @Html.Partial("~/Views/User/_Anmelden.cshtml", (hearthstone.web.Models.LoginModel)null)
             </div>
         </div>
     </nav>
@@ -68,6 +66,23 @@
     </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/toastr")
+
+    <script type="text/javascript">
+        @if (TempData["error"]!=null)
+        {
+            <text>toastr["error"]("</text>@TempData["error"]<text>");</text>
+        }
+        @if (TempData["success"] !=null)
+         {
+             <text>toastr["success"]("</text>@TempData["success"]<text>");</text>
+         }
+        @if (TempData["warning"] !=null)
+          {
+            <text>toastr["warning"]("</text>@TempData["warning"]<text>");</text>
+        }
+    </script>
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
