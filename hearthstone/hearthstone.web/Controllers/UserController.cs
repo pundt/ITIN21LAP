@@ -1,4 +1,5 @@
-﻿using hearthstone.logic;
+﻿using hearthstone.data;
+using hearthstone.logic;
 using hearthstone.web.App_Code;
 using hearthstone.web.Models;
 using log4net;
@@ -79,13 +80,30 @@ namespace hearthstone.web.Controllers
             {
                 switch (UserAdministration.Login(model.Username, model.Password))
                 {
-
                     case LoginResult.Successful:
-                        TempData[Constants.MessageType.SUCCESS] = Messages.SUCCESS_LOGIN;
-
+                        #region get user roles, create authentication ticket, encrypt it
                         /// setze auth cookie
+                        UserRole userRole = RolesAdministration.GetUserRole(model.Username);
+                        if (userRole != null)
+                        {
+                            FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1,
+                                model.Username,
+                                DateTime.Now,
+                                DateTime.Now.AddMinutes(30),
+                                true,
+                                userRole.Name,
+                                FormsAuthentication.FormsCookiePath);
 
+                            // Encrypt the ticket.
+                            string encTicket = FormsAuthentication.Encrypt(ticket);
+
+                            // Create the cookie.
+                            Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket));
+                        }
+
+                        TempData[Constants.MessageType.SUCCESS] = Messages.SUCCESS_LOGIN;
                         break;
+                    #endregion
                     case LoginResult.InvalidPassword:
                     case LoginResult.InvalidUsername:
                         TempData[Constants.MessageType.WARNING] = Messages.ERROR_LOGIN;
@@ -101,6 +119,51 @@ namespace hearthstone.web.Controllers
                 TempData[Constants.MessageType.ERROR] = Messages.ERROR_COMMON;
             }
 
+            return result;
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [AllowAnonymous]
+        public ActionResult Logout()
+        {
+            log.Info("POST - UserController - Logout");
+            ActionResult result = RedirectToAction("Index", "Shop");
+
+            /// set authentication cookie as expired!
+            FormsAuthentication.SignOut();
+        
+            return result;
+        }
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult Edit()
+        {
+            log.Info("GET - UserController - Edit");
+            ActionResult result = View();
+
+            string username = User.Identity.Name;
+
+            try
+            {
+                User currentUser = UserAdministration.GetUser(username);
+
+                /// map userinformation to UserEditModel
+                
+                /// pass it to view()
+                
+            }
+            catch (Exception ex)
+            {
+                if (ex is ArgumentNullException || ex is ArgumentException)
+                    TempData[Constants.MessageType.ERROR] = Messages.ERROR_UNKNOWN_USER;
+                else if (ex is Exception)
+                    TempData[Constants.MessageType.ERROR] = Messages.ERROR_COMMON;
+
+                result = RedirectToAction("Index", "Shop");
+            }
+           
             return result;
         }
     }

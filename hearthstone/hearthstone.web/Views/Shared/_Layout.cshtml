@@ -40,8 +40,15 @@
             <div class="row">
                 <div class="col-lg-2"><p>@Html.ActionLink("Shop", "Index", "Shop", new { })</p></div>
                 <div class="col-lg-2"><p>@Html.ActionLink("Karten-Deck", "Index", "Deckbuilder")</p></div>
-                <div class="col-lg-2"><p>@Html.ActionLink("Registrieren", "Register", "User")</p></div>
-               
+                @if (Request.IsAuthenticated)
+                {
+                    <div class="col-lg-2"><p>@Html.ActionLink("Profil", "Edit", "User")</p></div>
+                }
+                else
+                {
+                    <div class="col-lg-2"><p>@Html.ActionLink("Registrieren", "Register", "User")</p></div>
+                }
+
                 @Html.Partial("~/Views/User/_Anmelden.cshtml", (hearthstone.web.Models.LoginModel)null)
             </div>
         </div>

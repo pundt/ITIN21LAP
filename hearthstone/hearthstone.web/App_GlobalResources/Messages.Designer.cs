@@ -88,6 +88,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Username unbekannt!\nBitte melden Sie sich erneut an! ähnelt.
+        /// </summary>
+        internal static string ERROR_UNKNOWN_USER {
+            get {
+                return ResourceManager.GetString("ERROR_UNKNOWN_USER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Anmeldung erfolgreich ähnelt.
         /// </summary>
         internal static string SUCCESS_LOGIN {

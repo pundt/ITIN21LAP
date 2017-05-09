@@ -225,6 +225,10 @@
     <Content Include="Content\scripts\jquery-3.1.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\hearthstone.data\hearthstone.data.csproj">
+      <Project>{1A49AD84-DF40-4315-B2E7-FA18A315DC2C}</Project>
+      <Name>hearthstone.data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\hearthstone.logic\hearthstone.logic.csproj">
       <Project>{86C55EBB-17EE-4A13-B987-17C1B038ABE1}</Project>
       <Name>hearthstone.logic</Name>

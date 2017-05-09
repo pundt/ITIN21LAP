@@ -57,6 +57,7 @@
     <Compile Include="CardPack.cs">
       <DependentUpon>hearthstoneModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="_UserRole.cs" />
     <Compile Include="Deck.cs">
       <DependentUpon>hearthstoneModel.tt</DependentUpon>
     </Compile>

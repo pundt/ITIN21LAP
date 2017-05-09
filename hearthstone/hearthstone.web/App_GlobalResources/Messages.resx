@@ -126,6 +126,9 @@
   <data name="ERROR_REGISTER" xml:space="preserve">
     <value>Fehler beim Registrieren!\nBitte wenden Sie sich an den System-Administrator!</value>
   </data>
+  <data name="ERROR_UNKNOWN_USER" xml:space="preserve">
+    <value>Username unbekannt!\nBitte melden Sie sich erneut an!</value>
+  </data>
   <data name="SUCCESS_LOGIN" xml:space="preserve">
     <value>Anmeldung erfolgreich</value>
   </data>

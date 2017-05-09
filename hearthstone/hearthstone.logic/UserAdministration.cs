@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// we need this for include with lambda expressions!!
+using System.Data.Entity;
+
 using hearthstone.data;
 using System.Diagnostics;
 using log4net;
@@ -80,7 +83,8 @@ namespace hearthstone.logic
                             GamerTag = gamerTag,
                             Username = username, // = email
                             Password = Tools.GetHash(password + userSalt),
-                            UserSalt = userSalt
+                            UserSalt = userSalt,
+                            ID_UserRole = UserRole.PLAYER
                         };
 
                         context.AllUsers.Add(user);
@@ -135,7 +139,8 @@ namespace hearthstone.logic
                         {
                             result = LoginResult.Successful;
                             log.Debug($"User {username} logged in successfully");
-                        } else
+                        }
+                        else
                         {
                             result = LoginResult.InvalidPassword;
                             log.Warn($"User {username} entered invalid password");
@@ -158,6 +163,56 @@ namespace hearthstone.logic
             }
 
             return result;
+        }
+
+
+        /// <summary>
+        /// returns a user object for a given username
+        /// </summary>
+        /// <param name="username">a non-empty, existing username</param>
+        /// <returns>user object for given username</returns>
+        /// <exception cref="Exception">in case of a common db error</exception>
+        /// <exception cref="ArgumentNullException">username is null or empty</exception>
+        /// <exception cref="ArgumentException">invalid username</exception>
+        public static User GetUser(string username)
+        {
+            log.Info("UserAdministration - GetUser(username)");
+            User currentUser = null;
+
+            if (string.IsNullOrEmpty(username))
+                throw new ArgumentNullException(nameof(username));
+            
+            try
+            {
+                /// open connection and keep it open for as long as needed
+                using (var context = new clonestoneEntities())
+                {
+                    currentUser = context.AllUsers
+                        
+                        /// therefore we should/could/may (as userstory indicates!)
+                        /// eager load any navigation properties
+                        .Include(x => x.UserRole)
+
+
+                        .FirstOrDefault(x => x.Username.Equals(username));
+                    if (currentUser == null)
+                        throw new ArgumentException($"Invalid username {username}");
+
+                } /// connection will be close
+
+                /// so at this point LAZY LOADING is NOT available anymore!!
+            }
+            catch (Exception ex)
+            {
+                log.Error("UserAdministration - GetUser(username) - Exception", ex);
+                if (ex.InnerException != null)
+                    log.Error("UserAdministration - GetUser(username) - Exception (inner)", ex.InnerException);
+
+                Debugger.Break();
+                throw ex;
+            }
+
+            return currentUser;
         }
     }
 }
