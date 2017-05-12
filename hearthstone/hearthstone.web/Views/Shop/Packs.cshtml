@@ -1,0 +1,50 @@
+﻿@model hearthstone.web.Models.PackOverviewModel
+@{
+    ViewBag.Title = "Packs";
+}
+
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Clonestone Shop</h2>
+                <h4>where ogres dreams come true...</h4>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var pack in Model.Packs)
+            {
+                <div class="col-md-3">
+                    <figure class="text-center">
+                        <div class="pack-title">
+                            @pack.Name
+                        </div>
+                        <img src="@Url.Action("Pack", "Image", new { id = pack.ID})" alt="@pack.Name" />
+                        <figcaption>
+                            @pack.Description
+                        </figcaption>
+                    </figure>
+                    <div class="text-center">
+                        @if (Model.AmountMoney < pack.Price)
+                        {
+                            <a href="@Url.Action("Diamonds", "Shop")">Diamanten kaufen!</a>
+                        }
+                        else
+                        {
+                            using (Html.BeginForm("Buy", "Shop"))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                @Html.HiddenFor(x => pack.ID)
+
+                                <button type="submit" class="btn">
+                                    Kaufen
+                                </button>
+                            }
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

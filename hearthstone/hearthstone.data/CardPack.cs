@@ -24,6 +24,7 @@ namespace hearthstone.data
         public string Name { get; set; }
         public int NumberOfCards { get; set; }
         public int Price { get; set; }
+        public byte[] Image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VirtualPurchase> AllVirtualPurchases { get; set; }

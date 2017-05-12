@@ -25,6 +25,7 @@
           <Property Name="packname" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="numcards" Type="int" Nullable="false" />
           <Property Name="packprice" Type="int" Nullable="false" />
+          <Property Name="image" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="tblCardType">
           <Key>
@@ -274,6 +275,7 @@
           <Property Name="NumberOfCards" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AllVirtualPurchases" Relationship="Self.FK_tblVirtualPurchase_tblCardPack" FromRole="tblCardPack" ToRole="tblVirtualPurchase" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="tblCardType">
           <Key>
@@ -313,7 +315,7 @@
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="GamerTag" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="Binary" Nullable="false" />
+          <Property Name="Password" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
           <Property Name="UserSalt" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ID_UserRole" Type="Int32" />
           <Property Name="Avatar" Type="Binary" MaxLength="Max" FixedLength="false" />
@@ -531,6 +533,7 @@
           <EntitySetMapping Name="AllCardPacks">
             <EntityTypeMapping TypeName="clonestoneModel.CardPack">
               <MappingFragment StoreEntitySet="tblCardPack">
+                <ScalarProperty Name="Image" ColumnName="image" />
                 <ScalarProperty Name="ID" ColumnName="idCardPack" />
                 <ScalarProperty Name="Name" ColumnName="packname" />
                 <ScalarProperty Name="NumberOfCards" ColumnName="numcards" />

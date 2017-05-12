@@ -141,12 +141,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\PackModel.cs" />
+    <Compile Include="Models\PackOverviewModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -211,10 +214,13 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shop\Index.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
-    <Content Include="Views\User\_Anmelden.cshtml" />
+    <Content Include="Views\User\_Login.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Shop\Packs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Image\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

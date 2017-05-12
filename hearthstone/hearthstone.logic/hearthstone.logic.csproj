@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="RolesAdministration.cs" />
+    <Compile Include="ShopAdministration.cs" />
     <Compile Include="Tools.cs" />
     <Compile Include="UserAdministration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

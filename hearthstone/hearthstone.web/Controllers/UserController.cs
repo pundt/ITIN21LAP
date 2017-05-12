@@ -68,6 +68,13 @@ namespace hearthstone.web.Controllers
             return result;
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
@@ -75,6 +82,10 @@ namespace hearthstone.web.Controllers
         {
             log.Info("POST - UserController - Login");
             ActionResult result = RedirectToAction("Index", "Shop");
+
+            string returnUrl = Request.Params["ReturnUrl"];
+            if (returnUrl != null)
+                result = Redirect(returnUrl);
 
             try
             {
@@ -132,7 +143,7 @@ namespace hearthstone.web.Controllers
 
             /// set authentication cookie as expired!
             FormsAuthentication.SignOut();
-        
+
             return result;
         }
 
@@ -150,9 +161,9 @@ namespace hearthstone.web.Controllers
                 User currentUser = UserAdministration.GetUser(username);
 
                 /// map userinformation to UserEditModel
-                
+
                 /// pass it to view()
-                
+
             }
             catch (Exception ex)
             {
@@ -163,7 +174,7 @@ namespace hearthstone.web.Controllers
 
                 result = RedirectToAction("Index", "Shop");
             }
-           
+
             return result;
         }
     }

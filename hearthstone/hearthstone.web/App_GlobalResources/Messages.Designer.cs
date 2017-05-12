@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Es ist ein Fehler aufgetreten! Gnome rücken in Scharen aus um diesen zu beheben. Falls Eisenschmiede morgen noch steht, probieren sie es wieder! ähnelt.
+        /// </summary>
+        internal static string COMMON_ERROR {
+            get {
+                return ResourceManager.GetString("COMMON_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Es ist ein Fehler aufgetreten!\nBitte wenden Sie sich an den System-Administrator! ähnelt.
         /// </summary>
         internal static string ERROR_COMMON {
@@ -93,6 +102,15 @@ namespace Resources {
         internal static string ERROR_UNKNOWN_USER {
             get {
                 return ResourceManager.GetString("ERROR_UNKNOWN_USER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ungültige Pack-Nummer! Bitte wählen Sie eines der angezeigten Packs aus! ähnelt.
+        /// </summary>
+        internal static string INVALID_PACK_NUMBER {
+            get {
+                return ResourceManager.GetString("INVALID_PACK_NUMBER", resourceCulture);
             }
         }
         

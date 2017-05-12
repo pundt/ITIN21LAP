@@ -38,7 +38,7 @@ nav {
         width: 170px;
     }
 
-    nav .btn {
+    nav .btn, #content .btn {
         background-color: #DCAE67;
         border-color: #DCAE67;
         color: #000;
@@ -89,6 +89,7 @@ footer {
 /* id */
 #content {
     color: #DCAE67;
+    min-height: 700px;
 }
 
     #content .row {
@@ -96,7 +97,13 @@ footer {
     }
 
 /* class */
+.pack-title {
+    font-size: 22px;
+}
 
+figure img {
+    max-height: 250px;
+}
 
 /* cool animations down here*/
 /*

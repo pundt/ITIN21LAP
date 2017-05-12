@@ -38,7 +38,14 @@
     <nav>
         <div class="container">
             <div class="row">
-                <div class="col-lg-2"><p>@Html.ActionLink("Shop", "Index", "Shop", new { })</p></div>
+                @if (Request.IsAuthenticated)
+                {
+                    <div class="col-lg-2"><p>@Html.ActionLink("Shop", "Packs", "Shop")</p></div>
+                }
+                else
+                {
+                    <div class="col-lg-2"><p>@Html.ActionLink("Shop", "Index", "Shop")</p></div>
+                }
                 <div class="col-lg-2"><p>@Html.ActionLink("Karten-Deck", "Index", "Deckbuilder")</p></div>
                 @if (Request.IsAuthenticated)
                 {
@@ -49,7 +56,8 @@
                     <div class="col-lg-2"><p>@Html.ActionLink("Registrieren", "Register", "User")</p></div>
                 }
 
-                @Html.Partial("~/Views/User/_Anmelden.cshtml", (hearthstone.web.Models.LoginModel)null)
+
+                @Html.Partial("~/Views/User/_Login.cshtml", new hearthstone.web.Models.LoginModel())
             </div>
         </div>
     </nav>
@@ -78,15 +86,15 @@
     <script type="text/javascript">
         @if (TempData["error"]!=null)
         {
-            <text>toastr["error"]("</text>@TempData["error"]<text>");</text>
+            <text>toastr["error"]("@TempData["error"]");</text>
         }
         @if (TempData["success"] !=null)
          {
-             <text>toastr["success"]("</text>@TempData["success"]<text>");</text>
+             <text>toastr["success"]("@TempData["success"]");</text>
          }
         @if (TempData["warning"] !=null)
           {
-            <text>toastr["warning"]("</text>@TempData["warning"]<text>");</text>
+            <text>toastr["warning"]("@TempData["warning"]");</text>
         }
     </script>
 
