@@ -18,7 +18,7 @@ namespace hearthstone.data
         public Card()
         {
             this.AllDeckCards = new HashSet<DeckCard>();
-            this.AllUserCardCollections = new HashSet<UserCardCollection>();
+            this.AllUserCards = new HashSet<UserCard>();
         }
     
         public int ID { get; set; }
@@ -29,10 +29,10 @@ namespace hearthstone.data
         public Nullable<int> ID_CardType { get; set; }
         public byte[] Image { get; set; }
     
-        public virtual tblCardType CardType { get; set; }
+        public virtual CardType CardType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DeckCard> AllDeckCards { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserCardCollection> AllUserCardCollections { get; set; }
+        public virtual ICollection<UserCard> AllUserCards { get; set; }
     }
 }

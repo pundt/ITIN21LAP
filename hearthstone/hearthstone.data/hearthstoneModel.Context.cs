@@ -27,11 +27,11 @@ namespace hearthstone.data
     
         public virtual DbSet<Card> AllCards { get; set; }
         public virtual DbSet<CardPack> AllCardPacks { get; set; }
-        public virtual DbSet<tblCardType> tblCardType { get; set; }
+        public virtual DbSet<CardType> AllCardTypes { get; set; }
         public virtual DbSet<Deck> AllDecks { get; set; }
         public virtual DbSet<DeckCard> AllDeckCards { get; set; }
         public virtual DbSet<User> AllUsers { get; set; }
-        public virtual DbSet<UserCardCollection> AllUserCardCollections { get; set; }
+        public virtual DbSet<UserCard> AllUserCards { get; set; }
         public virtual DbSet<UserRole> AllUserRoles { get; set; }
         public virtual DbSet<VirtualPurchase> AllVirtualPurchases { get; set; }
     }

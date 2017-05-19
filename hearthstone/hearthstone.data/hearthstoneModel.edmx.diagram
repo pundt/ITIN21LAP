@@ -7,11 +7,11 @@
       <Diagram DiagramId="a34fd2c36a6e4ca5a30b7d291a1ea5c0" Name="Diagram1">
         <EntityTypeShape EntityType="clonestoneModel.Card" Width="1.5" PointX="7.5" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="clonestoneModel.CardPack" Width="1.5" PointX="0.625" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="clonestoneModel.tblCardType" Width="1.5" PointX="9.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="clonestoneModel.CardType" Width="1.5" PointX="9.75" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="clonestoneModel.Deck" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
         <EntityTypeShape EntityType="clonestoneModel.DeckCard" Width="1.5" PointX="7.5" PointY="6.125" IsExpanded="true" />
         <EntityTypeShape EntityType="clonestoneModel.User" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="clonestoneModel.UserCardCollection" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="clonestoneModel.UserCard" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="clonestoneModel.UserRole" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="clonestoneModel.VirtualPurchase" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
         <AssociationConnector Association="clonestoneModel.FK_tblCard_tblCardType" ManuallyRouted="false" />

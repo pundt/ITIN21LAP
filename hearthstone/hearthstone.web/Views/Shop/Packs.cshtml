@@ -35,7 +35,8 @@
                             {
                                 @Html.AntiForgeryToken()
 
-                                @Html.HiddenFor(x => pack.ID)
+                                @Html.Hidden("id", pack.ID)
+                                
 
                                 <button type="submit" class="btn">
                                     Kaufen

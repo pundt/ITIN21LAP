@@ -12,18 +12,18 @@ namespace hearthstone.data
     using System;
     using System.Collections.Generic;
     
-    public partial class tblCardType
+    public partial class CardType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblCardType()
+        public CardType()
         {
-            this.tblCard = new HashSet<Card>();
+            this.AllCards = new HashSet<Card>();
         }
     
-        public int idCardType { get; set; }
-        public string typename { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Card> tblCard { get; set; }
+        public virtual ICollection<Card> AllCards { get; set; }
     }
 }

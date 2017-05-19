@@ -264,7 +264,7 @@
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="CardType" Relationship="Self.FK_tblCard_tblCardType" FromRole="tblCard" ToRole="tblCardType" />
           <NavigationProperty Name="AllDeckCards" Relationship="Self.FK_tblDeckCard_tblCard" FromRole="tblCard" ToRole="tblDeckCard" />
-          <NavigationProperty Name="AllUserCardCollections" Relationship="Self.FK_tblUserCardCollection_tblCard" FromRole="tblCard" ToRole="tblUserCardCollection" />
+          <NavigationProperty Name="AllUserCards" Relationship="Self.FK_tblUserCardCollection_tblCard" FromRole="tblCard" ToRole="tblUserCardCollection" />
         </EntityType>
         <EntityType Name="CardPack">
           <Key>
@@ -277,13 +277,13 @@
           <NavigationProperty Name="AllVirtualPurchases" Relationship="Self.FK_tblVirtualPurchase_tblCardPack" FromRole="tblCardPack" ToRole="tblVirtualPurchase" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="tblCardType">
+        <EntityType Name="CardType">
           <Key>
-            <PropertyRef Name="idCardType" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="idCardType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="typename" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="tblCard" Relationship="Self.FK_tblCard_tblCardType" FromRole="tblCardType" ToRole="tblCard" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AllCards" Relationship="Self.FK_tblCard_tblCardType" FromRole="tblCardType" ToRole="tblCard" />
         </EntityType>
         <EntityType Name="Deck">
           <Key>
@@ -322,10 +322,10 @@
           <Property Name="AmountMoney" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AllDecks" Relationship="Self.FK_tblDeck_tblUser" FromRole="tblUser" ToRole="tblDeck" />
           <NavigationProperty Name="UserRole" Relationship="Self.FK_tblUser_tblUserRole" FromRole="tblUser" ToRole="tblUserRole" />
-          <NavigationProperty Name="AllUserCardCollections" Relationship="Self.FK_tblUserCardCollection_tblUser" FromRole="tblUser" ToRole="tblUserCardCollection" />
+          <NavigationProperty Name="AllUserCards" Relationship="Self.FK_tblUserCardCollection_tblUser" FromRole="tblUser" ToRole="tblUserCardCollection" />
           <NavigationProperty Name="AllVirtualPurchases" Relationship="Self.FK_tblVirtualPurchase_tblUser" FromRole="tblUser" ToRole="tblVirtualPurchase" />
         </EntityType>
-        <EntityType Name="UserCardCollection">
+        <EntityType Name="UserCard">
           <Key>
             <PropertyRef Name="ID_User" />
             <PropertyRef Name="ID_Card" />
@@ -357,11 +357,11 @@
           <NavigationProperty Name="User" Relationship="Self.FK_tblVirtualPurchase_tblUser" FromRole="tblVirtualPurchase" ToRole="tblUser" />
         </EntityType>
         <Association Name="FK_tblCard_tblCardType">
-          <End Role="tblCardType" Type="Self.tblCardType" Multiplicity="0..1" />
+          <End Role="tblCardType" Type="clonestoneModel.CardType" Multiplicity="0..1" />
           <End Role="tblCard" Type="clonestoneModel.Card" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblCardType">
-              <PropertyRef Name="idCardType" />
+              <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="tblCard">
               <PropertyRef Name="ID_CardType" />
@@ -382,7 +382,7 @@
         </Association>
         <Association Name="FK_tblUserCardCollection_tblCard">
           <End Role="tblCard" Type="clonestoneModel.Card" Multiplicity="1" />
-          <End Role="tblUserCardCollection" Type="clonestoneModel.UserCardCollection" Multiplicity="*" />
+          <End Role="tblUserCardCollection" Type="clonestoneModel.UserCard" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblCard">
               <PropertyRef Name="ID" />
@@ -442,7 +442,7 @@
         </Association>
         <Association Name="FK_tblUserCardCollection_tblUser">
           <End Role="tblUser" Type="clonestoneModel.User" Multiplicity="1" />
-          <End Role="tblUserCardCollection" Type="clonestoneModel.UserCardCollection" Multiplicity="*" />
+          <End Role="tblUserCardCollection" Type="clonestoneModel.UserCard" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblUser">
               <PropertyRef Name="ID" />
@@ -467,15 +467,15 @@
         <EntityContainer Name="clonestoneEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AllCards" EntityType="clonestoneModel.Card" />
           <EntitySet Name="AllCardPacks" EntityType="clonestoneModel.CardPack" />
-          <EntitySet Name="tblCardType" EntityType="Self.tblCardType" />
+          <EntitySet Name="AllCardTypes" EntityType="clonestoneModel.CardType" />
           <EntitySet Name="AllDecks" EntityType="clonestoneModel.Deck" />
           <EntitySet Name="AllDeckCards" EntityType="clonestoneModel.DeckCard" />
           <EntitySet Name="AllUsers" EntityType="clonestoneModel.User" />
-          <EntitySet Name="AllUserCardCollections" EntityType="clonestoneModel.UserCardCollection" />
+          <EntitySet Name="AllUserCards" EntityType="clonestoneModel.UserCard" />
           <EntitySet Name="AllUserRoles" EntityType="clonestoneModel.UserRole" />
           <EntitySet Name="AllVirtualPurchases" EntityType="clonestoneModel.VirtualPurchase" />
           <AssociationSet Name="FK_tblCard_tblCardType" Association="Self.FK_tblCard_tblCardType">
-            <End Role="tblCardType" EntitySet="tblCardType" />
+            <End Role="tblCardType" EntitySet="AllCardTypes" />
             <End Role="tblCard" EntitySet="AllCards" />
           </AssociationSet>
           <AssociationSet Name="FK_tblDeckCard_tblCard" Association="Self.FK_tblDeckCard_tblCard">
@@ -484,7 +484,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_tblUserCardCollection_tblCard" Association="Self.FK_tblUserCardCollection_tblCard">
             <End Role="tblCard" EntitySet="AllCards" />
-            <End Role="tblUserCardCollection" EntitySet="AllUserCardCollections" />
+            <End Role="tblUserCardCollection" EntitySet="AllUserCards" />
           </AssociationSet>
           <AssociationSet Name="FK_tblVirtualPurchase_tblCardPack" Association="Self.FK_tblVirtualPurchase_tblCardPack">
             <End Role="tblCardPack" EntitySet="AllCardPacks" />
@@ -504,7 +504,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_tblUserCardCollection_tblUser" Association="Self.FK_tblUserCardCollection_tblUser">
             <End Role="tblUser" EntitySet="AllUsers" />
-            <End Role="tblUserCardCollection" EntitySet="AllUserCardCollections" />
+            <End Role="tblUserCardCollection" EntitySet="AllUserCards" />
           </AssociationSet>
           <AssociationSet Name="FK_tblVirtualPurchase_tblUser" Association="Self.FK_tblVirtualPurchase_tblUser">
             <End Role="tblUser" EntitySet="AllUsers" />
@@ -541,11 +541,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblCardType">
-            <EntityTypeMapping TypeName="clonestoneModel.tblCardType">
+          <EntitySetMapping Name="AllCardTypes">
+            <EntityTypeMapping TypeName="clonestoneModel.CardType">
               <MappingFragment StoreEntitySet="tblCardType">
-                <ScalarProperty Name="idCardType" ColumnName="idCardType" />
-                <ScalarProperty Name="typename" ColumnName="typename" />
+                <ScalarProperty Name="ID" ColumnName="idCardType" />
+                <ScalarProperty Name="Name" ColumnName="typename" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -583,8 +583,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AllUserCardCollections">
-            <EntityTypeMapping TypeName="clonestoneModel.UserCardCollection">
+          <EntitySetMapping Name="AllUserCards">
+            <EntityTypeMapping TypeName="clonestoneModel.UserCard">
               <MappingFragment StoreEntitySet="tblUserCardCollection">
                 <ScalarProperty Name="ID_User" ColumnName="fkUser" />
                 <ScalarProperty Name="ID_Card" ColumnName="fkCard" />

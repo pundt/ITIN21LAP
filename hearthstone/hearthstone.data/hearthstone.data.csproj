@@ -57,6 +57,12 @@
     <Compile Include="CardPack.cs">
       <DependentUpon>hearthstoneModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CardType.cs">
+      <DependentUpon>hearthstoneModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserCard.cs">
+      <DependentUpon>hearthstoneModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="_UserRole.cs" />
     <Compile Include="Deck.cs">
       <DependentUpon>hearthstoneModel.tt</DependentUpon>
@@ -80,13 +86,7 @@
       <DependentUpon>hearthstoneModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="tblCardType.cs">
-      <DependentUpon>hearthstoneModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>hearthstoneModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UserCardCollection.cs">
       <DependentUpon>hearthstoneModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UserRole.cs">

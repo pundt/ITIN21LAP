@@ -12,7 +12,7 @@ namespace hearthstone.data
     using System;
     using System.Collections.Generic;
     
-    public partial class UserCardCollection
+    public partial class UserCard
     {
         public int ID_User { get; set; }
         public int ID_Card { get; set; }

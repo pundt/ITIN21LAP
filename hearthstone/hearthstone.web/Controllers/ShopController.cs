@@ -61,7 +61,7 @@ namespace hearthstone.web.Controllers
             }
             catch (Exception)
             {
-                TempData[Constants.MessageType.ERROR] = Messages.COMMON_ERROR;
+                TempData[Constants.MessageType.ERROR] = Messages.ERROR_COMMON;
             }
 
             return View(model);
@@ -69,23 +69,35 @@ namespace hearthstone.web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Buy(int id)
         {
             ActionResult result = RedirectToAction("Packs", "Shop");
 
-            if (id<=0)
+            if (id <= 0)
             {
                 TempData[Constants.MessageType.WARNING] = Messages.INVALID_PACK_NUMBER;
             }
 
-            //ShopAdministration.BuyPack(id)
-
-            /// buy pack with given id
-            
-            /// tmt generate cards (by randomizer) in dataStorage
-
-            /// redirect to page to show cards bought
-
+            string username = User.Identity.Name;
+            try
+            {
+                switch (ShopAdministration.BuyPack(id, username))
+                {
+                    case BuyResult.Success:
+                        TempData[Constants.MessageType.SUCCESS] = Messages.BUY_PACK_SUCCESS;
+                        break;
+                    case BuyResult.NotEnoughMoney:
+                        TempData[Constants.MessageType.WARNING] = Messages.NOT_ENOUGH_MONEY;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+                TempData[Constants.MessageType.ERROR] = Messages.ERROR_COMMON;              
+            }
 
             return result;
         }
