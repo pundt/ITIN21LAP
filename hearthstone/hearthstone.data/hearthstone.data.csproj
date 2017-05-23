@@ -63,6 +63,8 @@
     <Compile Include="UserCard.cs">
       <DependentUpon>hearthstoneModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="_Deck.cs" />
+    <Compile Include="_User.cs" />
     <Compile Include="_UserRole.cs" />
     <Compile Include="Deck.cs">
       <DependentUpon>hearthstoneModel.tt</DependentUpon>

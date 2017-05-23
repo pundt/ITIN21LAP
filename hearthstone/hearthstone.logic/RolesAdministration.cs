@@ -51,7 +51,7 @@ namespace hearthstone.logic
             {
                 log.Error("RolesAdministration - GetUserRoles(username) - Exception", ex);
                 if (ex.InnerException != null)
-                    log.Error("UserAdministration - GetUserRoles(username) - Exception (inner)", ex.InnerException);
+                    log.Error("RolesAdministration - GetUserRoles(username) - Exception (inner)", ex.InnerException);
 
                 Debugger.Break();
                 throw ex;

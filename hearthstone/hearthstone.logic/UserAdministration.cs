@@ -33,6 +33,7 @@ namespace hearthstone.logic
 
         /// <summary>
         /// Registers a new user in data storage
+        /// adds three static user decks with randomized deck names
         /// returns true if successful, otherelse false
         /// throws exception on invalid data
         /// </summary>
@@ -86,6 +87,15 @@ namespace hearthstone.logic
                             UserSalt = userSalt,
                             ID_UserRole = UserRole.PLAYER
                         };
+
+                        for (int i = 0; i < User.MAX_DECK; i++)
+                        {
+                            Deck userDeck = new Deck()
+                            {
+                                Name = $"{gamerTag}'s {Deck.GetRandomizedDeckName}"
+                            };
+                            user.AllDecks.Add(userDeck);
+                        }
 
                         context.AllUsers.Add(user);
                         context.SaveChanges();
