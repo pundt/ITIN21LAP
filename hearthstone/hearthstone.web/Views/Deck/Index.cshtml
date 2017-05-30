@@ -1,0 +1,37 @@
+﻿@model IEnumerable<hearthstone.web.Models.DeckOverviewModel>
+@{
+    ViewBag.Title = "Deckbuilder";
+}
+
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Clonestone Deck-Baukasten</h2>
+                <h4>bauen, suchen, tüffteln - hier wird gearbeitet!</h4>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var deck in Model)
+            {
+                <div class="col-md-3">
+                    <figure class="text-center">
+                        <div class="pack-title">
+                            @deck.Name
+                        </div>
+                        <img src="@deck.ImageUrl">
+                        <figcaption>
+                            <!--
+                                eg: show number of cards within this deck ...
+                            -->
+                            @deck.NumberOfCardsInDeck Karten
+                        </figcaption>
+                    </figure>
+                    <div class="text-center">
+                        <a href="@Url.Action("Edit", "Deck", new { id = deck.ID_Deck })">Los geht's</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

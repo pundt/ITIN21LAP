@@ -141,12 +141,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DeckController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CardModel.cs" />
+    <Compile Include="Models\DeckOverviewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\PackModel.cs" />
     <Compile Include="Models\PackOverviewModel.cs" />
@@ -154,6 +157,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\deck.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\slide2.jpg" />
     <Content Include="Content\images\slide1.jpg" />
@@ -217,6 +221,7 @@
     <Content Include="Views\User\_Login.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Shop\Packs.cshtml" />
+    <Content Include="Views\Deck\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -290,7 +290,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ID_User" Type="Int32" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_tblDeck_tblUser" FromRole="tblDeck" ToRole="tblUser" />
           <NavigationProperty Name="AllDeckCards" Relationship="Self.FK_tblDeckCard_tblDeck" FromRole="tblDeck" ToRole="tblDeckCard" />

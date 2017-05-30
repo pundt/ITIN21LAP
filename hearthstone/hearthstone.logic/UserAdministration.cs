@@ -92,9 +92,11 @@ namespace hearthstone.logic
                         {
                             Deck userDeck = new Deck()
                             {
-                                Name = $"{gamerTag}'s {Deck.GetRandomizedDeckName}"
+                                Name = $"{gamerTag}'s {Deck.GetRandomizedDeckName}",
+                                User = user
                             };
-                            user.AllDecks.Add(userDeck);
+                            context.AllDecks.Add(userDeck);
+                            //user.AllDecks.Add(userDeck);
                         }
 
                         context.AllUsers.Add(user);
