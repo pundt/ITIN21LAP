@@ -70,6 +70,42 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Fehler beim Hinzufügen der Karte! ähnelt.
+        /// </summary>
+        internal static string CARD_ADD_ERROR {
+            get {
+                return ResourceManager.GetString("CARD_ADD_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Karte erfolgreich zum Deck hinzugefügt! ähnelt.
+        /// </summary>
+        internal static string CARD_ADD_SUCCESS {
+            get {
+                return ResourceManager.GetString("CARD_ADD_SUCCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Fehler beim Entfernen der Karte! ähnelt.
+        /// </summary>
+        internal static string CARD_REMOVE_ERROR {
+            get {
+                return ResourceManager.GetString("CARD_REMOVE_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Karte erfolgreich vom Deck entfernt! ähnelt.
+        /// </summary>
+        internal static string CARD_REMOVE_SUCCESS {
+            get {
+                return ResourceManager.GetString("CARD_REMOVE_SUCCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Es ist ein Fehler aufgetreten! Gnome rücken in Scharen aus um diesen zu beheben. Falls Eisenschmiede morgen noch steht, probieren sie es wieder! ähnelt.
         /// </summary>
         internal static string ERROR_COMMON {

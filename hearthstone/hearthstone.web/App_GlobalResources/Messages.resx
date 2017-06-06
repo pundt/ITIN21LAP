@@ -120,6 +120,18 @@
   <data name="BUY_PACK_SUCCESS" xml:space="preserve">
     <value>Card-Pack erfolgreich gekauft!\nGlückwunsch!!</value>
   </data>
+  <data name="CARD_ADD_ERROR" xml:space="preserve">
+    <value>Fehler beim Hinzufügen der Karte!</value>
+  </data>
+  <data name="CARD_ADD_SUCCESS" xml:space="preserve">
+    <value>Karte erfolgreich zum Deck hinzugefügt!</value>
+  </data>
+  <data name="CARD_REMOVE_ERROR" xml:space="preserve">
+    <value>Fehler beim Entfernen der Karte!</value>
+  </data>
+  <data name="CARD_REMOVE_SUCCESS" xml:space="preserve">
+    <value>Karte erfolgreich vom Deck entfernt!</value>
+  </data>
   <data name="ERROR_COMMON" xml:space="preserve">
     <value>Es ist ein Fehler aufgetreten! Gnome rücken in Scharen aus um diesen zu beheben. Falls Eisenschmiede morgen noch steht, probieren sie es wieder!</value>
   </data>

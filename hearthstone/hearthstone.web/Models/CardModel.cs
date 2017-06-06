@@ -10,6 +10,8 @@ namespace hearthstone.web.Models
         public int ID { get; set; }
         public string Name { get; set; }
 
+        public int Mana { get; set; }
 
+        public int Attack { get; set; }
     }
 }

@@ -149,6 +149,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CardModel.cs" />
+    <Compile Include="Models\DeckDetailModel.cs" />
     <Compile Include="Models\DeckOverviewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\PackModel.cs" />
@@ -157,8 +158,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\attack.png" />
     <Content Include="Content\images\deck.png" />
     <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\mana.png" />
     <Content Include="Content\images\slide2.jpg" />
     <Content Include="Content\images\slide1.jpg" />
     <Content Include="Content\images\slide3.jpg" />
@@ -222,6 +225,7 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Shop\Packs.cshtml" />
     <Content Include="Views\Deck\Index.cshtml" />
+    <Content Include="Views\Deck\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

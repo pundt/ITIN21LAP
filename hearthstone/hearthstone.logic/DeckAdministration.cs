@@ -173,9 +173,9 @@ namespace hearthstone.logic
         /// </summary>
         /// <param name="idDeck"></param>
         /// <returns></returns>
-        public static List<DeckCard> GetDeckCardsForDeck(int idDeck)
+        public static List<DeckCard> GetCardsInDeck(int idDeck)
         {
-            log.Info("DeckAdministration - GetDeckCardsForDeck(idDeck)");
+            log.Info("DeckAdministration - GetCardsInDeck(idDeck)");
             List<DeckCard> deckCards = null;
 
             if (idDeck < 1)
@@ -214,6 +214,7 @@ namespace hearthstone.logic
         /// </summary>
         /// <param name="idDeck"></param>
         /// <returns></returns>
+        /// <exception cref="Exception">in case db access fails</exception>
         public static List<UserCard> GetCardsForDeck(string username, int idDeck)
         {
             log.Info("DeckAdministration - GetDeckCards(username, idDeck)");
@@ -229,7 +230,10 @@ namespace hearthstone.logic
             {
                 using (var context = new clonestoneEntities())
                 {
-                    User user = context.AllUsers.FirstOrDefault(x => x.Username.Equals(username));
+                    User user = context.AllUsers
+                                    .Include(x => x.AllUserCards)
+                                    .Include(x => x.AllUserCards.Select(y => y.Card))
+                                    .FirstOrDefault(x => x.Username.Equals(username));
 
                     if (user == null)
                         throw new ArgumentException("Invalid username");

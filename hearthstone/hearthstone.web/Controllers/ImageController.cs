@@ -13,6 +13,7 @@ namespace hearthstone.web.Controllers
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        [OutputCache(Duration=int.MaxValue, VaryByParam = "id")]
         public ActionResult Pack(int id = -1)
         {
             log.Info("GET - Image - Pack");
@@ -32,6 +33,30 @@ namespace hearthstone.web.Controllers
                 catch (Exception)
                 {}
             }           
+
+            return result;
+        }
+
+        [OutputCache(Duration = int.MaxValue, VaryByParam = "id")]
+        public ActionResult Card(int id = -1)
+        {
+            log.Info("GET - Image - Card");
+            ActionResult result = HttpNotFound();
+
+            if (id > 0)
+            {
+                /// get according pack from datastorage
+                try
+                {
+                    Card card = CardAdministration.GetCard(id);
+                    if (card != null && card.Image != null)
+                    {
+                        result = File(card.Image, "image/jpg");
+                    }
+                }
+                catch (Exception)
+                { }
+            }
 
             return result;
         }

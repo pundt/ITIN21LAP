@@ -1,0 +1,87 @@
+﻿@model hearthstone.web.Models.DeckDetailModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Clonestone Deck-Baukasten</h2>
+                <h4>bauen, suchen, tüffteln - mach das Beste aus &quot;@Model.DeckOverview.Name&quot;</h4>
+            </div>
+        </div>
+        <div class="row cardsForDeck">
+            <h5>Noch verfügbar um den Gegner zu vernichten...</h5>
+           @foreach (var card in Model.CardsForDeck)
+           {
+                <div class="col-sm-2 card">
+                    <figure class="text-center">
+                        <div class="card-title">
+                            @card.Name
+                        </div>
+                        <img src="@Url.Action("Card","Image", new { id = card.ID })">
+                        <figcaption>
+                            <!--
+                                eg: show number of cards within this deck ...
+                            -->
+                            <div class="row">
+                                <div class="col-sm-12 text-center">@card.Name</div>
+                                <div class="col-sm-6 text-center"><img src="@Url.Content("~/Content/images/mana.png")" class="icon" title="Manaverbrauch" />&nbsp;@card.Mana</div>
+                                <div class="col-sm-6 text-center"><img src="@Url.Content("~/Content/images/attack.png")" class="icon" title="Angriffswert" />&nbsp;@card.Attack</div>
+                            </div>                            
+                        </figcaption>
+                    </figure>
+                    <div class="text-center">
+                        @using (Html.BeginForm("Add", "Deck", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken();
+                            @Html.Hidden("idDeck", Model.DeckOverview.ID_Deck)
+                            @Html.Hidden("idCard", card.ID)
+                            <button type="submit">
+                                Hinzufügen
+                            </button>
+                        }
+
+                        @*<a href="@Url.Action("Add", "Deck", new { id = card.ID})">Hinzufügen</a>*@
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="row cardsInDeck">
+            <h5>Bereit um alles dem Erdboden gleich zu machen!</h5>
+            @foreach (var card in Model.CardsInDeck)
+            {
+                <div class="col-sm-2 card">
+                    <figure class="text-center">
+                        <div class="card-title">
+                            @card.Name
+                        </div>
+                        <img src="@Url.Action("Card","Image",  new { id = card.ID })">
+                        <figcaption>
+                            <!--
+                            eg: show number of cards within this deck ...
+                        -->
+                            <div class="row">
+                                <div class="col-sm-12 text-center">@card.Name</div>
+                                <div class="col-sm-6 text-center"><img src="@Url.Content("~/Content/images/mana.png")" title="Manaverbrauch" class="icon" />&nbsp;@card.Mana</div>
+                                <div class="col-sm-6 text-center"><img src="@Url.Content("~/Content/images/attack.png")" title="Angriffswert" class="icon" />&nbsp;@card.Attack</div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <div class="text-center">
+                        @using (Html.BeginForm("Remove", "Deck", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken();
+                            @Html.Hidden("idDeck", Model.DeckOverview.ID_Deck)
+                            @Html.Hidden("idCard", card.ID)
+                            <button type="submit">
+                                Entfernen
+                            </button>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

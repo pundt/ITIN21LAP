@@ -97,13 +97,54 @@ footer {
     }
 
 /* class */
+.pack {
+
+}
+
+.pack figure img {
+    max-height: 250px;
+}
+
 .pack-title {
     font-size: 22px;
 }
 
-figure img {
-    max-height: 250px;
+.card {
+
 }
+
+.card figure img {
+    max-height: 150px;
+}
+
+.card-title {
+    font-size: 16px;
+}
+
+.cardsInDeck, .cardsForDeck {
+    border-radius: 5px;
+    border: 1px solid white;
+    max-height: 290px;
+    overflow-y: scroll;
+}
+
+.cardsInDeck .icon, .cardsForDeck .icon {
+    max-height: 25px;
+}
+
+    .cardsInDeck button, .cardsForDeck button {
+        background-color: #DCAE67;
+        border-color: #DCAE67;
+        color: #000;
+    }
+
+        .cardsInDeck button:hover, .cardsForDeck button:active {
+            background-color: #000;
+            color: #DCAE67;
+            border-color: #DCAE67;
+        }
+
+
 
 /* cool animations down here*/
 /*
