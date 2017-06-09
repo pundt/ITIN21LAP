@@ -63,7 +63,6 @@ namespace hearthstone.web.Controllers
                 string username = User.Identity.Name;
                 int idDeck = id;
 
-
                 try
                 {
                     /// get cards available for this deck
