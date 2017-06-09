@@ -20,6 +20,7 @@ namespace hearthstone.data
             this.AllDecks = new HashSet<Deck>();
             this.AllUserCards = new HashSet<UserCard>();
             this.AllVirtualPurchases = new HashSet<VirtualPurchase>();
+            this.AllProductPurchases = new HashSet<ProductPurchase>();
         }
     
         public int ID { get; set; }
@@ -40,5 +41,7 @@ namespace hearthstone.data
         public virtual ICollection<UserCard> AllUserCards { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VirtualPurchase> AllVirtualPurchases { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductPurchase> AllProductPurchases { get; set; }
     }
 }

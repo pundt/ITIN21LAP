@@ -39,7 +39,7 @@
             <PropertyRef Name="idDeck" />
           </Key>
           <Property Name="idDeck" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="deckname" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="deckname" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="fkUser" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tblDeckCard">
@@ -50,6 +50,27 @@
           <Property Name="fkDeck" Type="int" Nullable="false" />
           <Property Name="fkCard" Type="int" Nullable="false" />
           <Property Name="numcards" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProduct">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="image" Type="varbinary(max)" />
+          <Property Name="productName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="numberOfDiamonds" Type="int" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProductPurchase">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="numberOfDiamonds" Type="int" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="id_user" Type="int" Nullable="false" />
+          <Property Name="id_product" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tblUser">
           <Key>
@@ -92,6 +113,30 @@
           <Property Name="timeofpurchase" Type="datetime" Nullable="false" />
           <Property Name="numpacks" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_ProductPurchase_Product">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1" />
+          <End Role="tblProductPurchase" Type="Self.tblProductPurchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblProductPurchase">
+              <PropertyRef Name="id_product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductPurchase_User">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblProductPurchase" Type="Self.tblProductPurchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="tblProductPurchase">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblCard_tblCardType">
           <End Role="tblCardType" Type="Self.tblCardType" Multiplicity="0..1" />
           <End Role="tblCard" Type="Self.tblCard" Multiplicity="*" />
@@ -206,10 +251,20 @@
           <EntitySet Name="tblCardType" EntityType="Self.tblCardType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblDeck" EntityType="Self.tblDeck" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblDeckCard" EntityType="Self.tblDeckCard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProduct" EntityType="Self.tblProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductPurchase" EntityType="Self.tblProductPurchase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUserCardCollection" EntityType="Self.tblUserCardCollection" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUserRole" EntityType="Self.tblUserRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblVirtualPurchase" EntityType="Self.tblVirtualPurchase" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ProductPurchase_Product" Association="Self.FK_ProductPurchase_Product">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblProductPurchase" EntitySet="tblProductPurchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductPurchase_User" Association="Self.FK_ProductPurchase_User">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblProductPurchase" EntitySet="tblProductPurchase" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblCard_tblCardType" Association="Self.FK_tblCard_tblCardType">
             <End Role="tblCardType" EntitySet="tblCardType" />
             <End Role="tblCard" EntitySet="tblCard" />
@@ -324,6 +379,7 @@
           <NavigationProperty Name="UserRole" Relationship="Self.FK_tblUser_tblUserRole" FromRole="tblUser" ToRole="tblUserRole" />
           <NavigationProperty Name="AllUserCards" Relationship="Self.FK_tblUserCardCollection_tblUser" FromRole="tblUser" ToRole="tblUserCardCollection" />
           <NavigationProperty Name="AllVirtualPurchases" Relationship="Self.FK_tblVirtualPurchase_tblUser" FromRole="tblUser" ToRole="tblVirtualPurchase" />
+          <NavigationProperty Name="AllProductPurchases" Relationship="clonestoneModel.FK_ProductPurchase_User" FromRole="User" ToRole="tblProductPurchase" />
         </EntityType>
         <EntityType Name="UserCard">
           <Key>
@@ -510,7 +566,65 @@
             <End Role="tblUser" EntitySet="AllUsers" />
             <End Role="tblVirtualPurchase" EntitySet="AllVirtualPurchases" />
           </AssociationSet>
+          <EntitySet Name="AllProducts" EntityType="clonestoneModel.Product" />
+          <EntitySet Name="AllProductPurchases" EntityType="clonestoneModel.ProductPurchase" />
+          <AssociationSet Name="FK_ProductPurchase_Product" Association="clonestoneModel.FK_ProductPurchase_Product">
+            <End Role="tblProduct" EntitySet="AllProducts" />
+            <End Role="tblProductPurchase" EntitySet="AllProductPurchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductPurchase_User" Association="clonestoneModel.FK_ProductPurchase_User">
+            <End Role="User" EntitySet="AllUsers" />
+            <End Role="tblProductPurchase" EntitySet="AllProductPurchases" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NumberOfDiamonds" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AllProductPurchases" Relationship="clonestoneModel.FK_ProductPurchase_Product" FromRole="tblProduct" ToRole="tblProductPurchase" />
+        </EntityType>
+        <EntityType Name="ProductPurchase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumberOfDiamonds" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ID_User" Type="Int32" Nullable="false" />
+          <Property Name="ID_Product" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="clonestoneModel.FK_ProductPurchase_Product" FromRole="tblProductPurchase" ToRole="tblProduct" />
+          <NavigationProperty Name="User" Relationship="clonestoneModel.FK_ProductPurchase_User" FromRole="tblProductPurchase" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_ProductPurchase_Product">
+          <End Type="clonestoneModel.Product" Role="tblProduct" Multiplicity="1" />
+          <End Type="clonestoneModel.ProductPurchase" Role="tblProductPurchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblProductPurchase">
+              <PropertyRef Name="ID_Product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductPurchase_User">
+          <End Type="clonestoneModel.User" Role="User" Multiplicity="1" />
+          <End Type="clonestoneModel.ProductPurchase" Role="tblProductPurchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblProductPurchase">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -608,6 +722,29 @@
                 <ScalarProperty Name="ID_CardPack" ColumnName="fkCardPack" />
                 <ScalarProperty Name="PurchaseDate" ColumnName="timeofpurchase" />
                 <ScalarProperty Name="NumberOfPacks" ColumnName="numpacks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AllProducts">
+            <EntityTypeMapping TypeName="clonestoneModel.Product">
+              <MappingFragment StoreEntitySet="tblProduct">
+                <ScalarProperty Name="Active" ColumnName="active" />
+                <ScalarProperty Name="Price" ColumnName="price" />
+                <ScalarProperty Name="NumberOfDiamonds" ColumnName="numberOfDiamonds" />
+                <ScalarProperty Name="Name" ColumnName="productName" />
+                <ScalarProperty Name="Image" ColumnName="image" />
+                <ScalarProperty Name="ID" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AllProductPurchases">
+            <EntityTypeMapping TypeName="clonestoneModel.ProductPurchase">
+              <MappingFragment StoreEntitySet="tblProductPurchase">
+                <ScalarProperty Name="ID_Product" ColumnName="id_product" />
+                <ScalarProperty Name="ID_User" ColumnName="id_user" />
+                <ScalarProperty Name="Price" ColumnName="price" />
+                <ScalarProperty Name="NumberOfDiamonds" ColumnName="numberOfDiamonds" />
+                <ScalarProperty Name="ID" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

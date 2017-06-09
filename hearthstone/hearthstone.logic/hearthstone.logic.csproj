@@ -54,7 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CardAdministration.cs" />
+    <Compile Include="CreditCardData.cs" />
     <Compile Include="DeckAdministration.cs" />
+    <Compile Include="ProductAdministration.cs" />
     <Compile Include="RolesAdministration.cs" />
     <Compile Include="ShopAdministration.cs" />
     <Compile Include="Tools.cs" />

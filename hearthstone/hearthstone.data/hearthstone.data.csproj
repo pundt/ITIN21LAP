@@ -60,6 +60,12 @@
     <Compile Include="CardType.cs">
       <DependentUpon>hearthstoneModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>hearthstoneModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductPurchase.cs">
+      <DependentUpon>hearthstoneModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="UserCard.cs">
       <DependentUpon>hearthstoneModel.tt</DependentUpon>
     </Compile>

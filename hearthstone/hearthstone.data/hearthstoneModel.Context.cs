@@ -34,5 +34,7 @@ namespace hearthstone.data
         public virtual DbSet<UserCard> AllUserCards { get; set; }
         public virtual DbSet<UserRole> AllUserRoles { get; set; }
         public virtual DbSet<VirtualPurchase> AllVirtualPurchases { get; set; }
+        public virtual DbSet<Product> AllProducts { get; set; }
+        public virtual DbSet<ProductPurchase> AllProductPurchases { get; set; }
     }
 }
